@@ -1,200 +1,325 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viaje por Gran Canaria</title>
-    <style>
-        /* Estilos básicos para mantener la legibilidad y una estructura similar a una rejilla */
-        body {
-            font-family: sans-serif;
-            margin: 20px;
-        }
-        .entry-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .chapter {
-            margin-bottom: 30px;
-            display: inline-block;
-            vertical-align: top;
-            width: 30%; /* Ajuste aproximado para simular las columnas */
-            padding: 10px;
-            box-sizing: border-box;
-            text-align: center;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin-bottom: 10px;
-        }
-        a {
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Viaje por Gran Canaria</title>
+
+  <style>
+    :root{
+      --bg:#f6f7fb;
+      --txt:#111827;
+      --muted:#6b7280;
+      --line:rgba(17,24,39,.12);
+      --shadow: 0 12px 30px rgba(17,24,39,.10);
+      --radius:16px;
+    }
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, sans-serif;
+      color: var(--txt);
+      background:
+        radial-gradient(1200px 700px at 20% 0%, rgba(59,130,246,.10) 0%, rgba(59,130,246,0) 55%),
+        radial-gradient(1000px 700px at 85% 10%, rgba(168,85,247,.10) 0%, rgba(168,85,247,0) 55%),
+        var(--bg);
+    }
+
+    .entry-content{
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 18px 46px;
+    }
+
+    h1{
+      margin: 0 0 18px;
+      padding: 18px 18px 10px;
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      background: linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.55));
+      font-size: clamp(22px, 2.4vw, 34px);
+      letter-spacing: .2px;
+      text-transform: lowercase;
+    }
+
+    /* ✅ Galería: 4 tarjetas por fila */
+    .gallery{
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    /* Tarjeta */
+    .chapter{
+      background: linear-gradient(180deg, rgba(255,255,255,1), rgba(255,255,255,.92));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transform: translateZ(0);
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+      min-width: 0;
+    }
+    .chapter:hover{
+      transform: translateY(-3px) scale(1.01);
+      border-color: rgba(59,130,246,.35);
+      box-shadow: 0 16px 38px rgba(17,24,39,.14);
+    }
+
+    /* Imagen */
+    .thumb{
+      display:block;
+      width:100%;
+      aspect-ratio: 16/9;
+      background: rgba(17,24,39,.04);
+      overflow:hidden;
+    }
+    .thumb img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+    }
+
+    /* ✅ Título debajo SIEMPRE visible */
+    .cap{
+      padding: 12px 12px 14px;
+      text-align:center;
+      background: rgba(255,255,255,.98);
+    }
+    .cap a{
+      display:block;
+      font-weight: 800;
+      color: var(--txt);
+      text-decoration: none;
+      text-transform: lowercase;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* En pantallas pequeñas, mantener “4” con scroll horizontal */
+    @media (max-width: 520px){
+      .gallery{
+        overflow-x: auto;
+        padding-bottom: 8px;
+      }
+      .chapter{
+        min-width: 220px;
+      }
+    }
+  </style>
 </head>
+
 <body>
+  <div class="entry-content">
+    <h1>Viaje por Gran Canaria</h1>
 
-    <div class="entry-content">
-        <h1>Viaje por Gran Canaria</h1>
+    <section class="gallery" aria-label="Galería">
 
-        <div class="chapter">
-            <a href="prologo-gran-canaria.html">
-                <img src="prologo.jpg" alt="Prólogo">
-            </a>
-            <a href="prologo-gran-canaria.html">Prólogo</a>
+      <article class="chapter">
+        <a href="prologo-gran-canaria.html" class="thumb">
+          <img src="prologo.jpg" alt="Prólogo">
+        </a>
+        <div class="cap">
+          <a href="prologo-gran-canaria.html">Prólogo</a>
         </div>
+      </article>
 
-        <div class="chapter">
-            <a href="vegueta.html">
-                <img src="vegueta2.jpg" alt="Vegueta">
-            </a>
-            <a href="vegueta.html">Vegueta</a>
+      <article class="chapter">
+        <a href="vegueta.html" class="thumb">
+          <img src="vegueta2.jpg" alt="Vegueta">
+        </a>
+        <div class="cap">
+          <a href="vegueta.html">Vegueta</a>
         </div>
+      </article>
 
-        <div class="chapter">
-            <a href="triana.html">
-                <img src="triana.jpg" alt="Triana">
-            </a>
-            <a href="triana.html">Triana</a>
+      <article class="chapter">
+        <a href="triana.html" class="thumb">
+          <img src="triana.jpg" alt="Triana">
+        </a>
+        <div class="cap">
+          <a href="triana.html">Triana</a>
         </div>
+      </article>
 
-        <div class="chapter">
-            <a href="capitulo-3-san-telmo-las-notas-del-tiempo.html">
-                <img src="san-telmo.jpg" alt="San Telmo">
-            </a>
-            <a href="capitulo-3-san-telmo-las-notas-del-tiempo.html">San Telmo</a>
+      <article class="chapter">
+        <a href="capitulo-3-san-telmo-las-notas-del-tiempo.html" class="thumb">
+          <img src="san-telmo.jpg" alt="San Telmo">
+        </a>
+        <div class="cap">
+          <a href="capitulo-3-san-telmo-las-notas-del-tiempo.html">San Telmo</a>
         </div>
+      </article>
 
-        <div class="chapter">
-            <a href="capitulo-4-las-canteras-el-reflejo-de-las-estrellas.html">
-                <img src="las-canteras-2.jpg" alt="Las Canteras">
-            </a>
-            <a href="capitulo-4-las-canteras-el-reflejo-de-las-estrellas.html">Las Canteras</a>
+      <article class="chapter">
+        <a href="capitulo-4-las-canteras-el-reflejo-de-las-estrellas.html" class="thumb">
+          <img src="las-canteras-2.jpg" alt="Las Canteras">
+        </a>
+        <div class="cap">
+          <a href="capitulo-4-las-canteras-el-reflejo-de-las-estrellas.html">Las Canteras</a>
         </div>
+      </article>
 
-        <div class="chapter">
-            <a href="capitulo-5-el-auditorio-la-cancion-del-viento.html">
-                <img src="auditorio-3.jpg" alt="Auditorio Alfredo Kraus">
-            </a>
-            <a href="capitulo-5-el-auditorio-la-cancion-del-viento.html">Auditorio Alfredo Kraus</a>
+      <article class="chapter">
+        <a href="capitulo-5-el-auditorio-la-cancion-del-viento.html" class="thumb">
+          <img src="auditorio-3.jpg" alt="Auditorio Alfredo Kraus">
+        </a>
+        <div class="cap">
+          <a href="capitulo-5-el-auditorio-la-cancion-del-viento.html">Auditorio Alfredo Kraus</a>
         </div>
+      </article>
 
-        <div class="chapter">
-            <a href="capitulo-6-el-jardin-botanico-un-mensaje-en-las-hojas.html">
-                <img src="jardin-canario.jpg" alt="Jardín Botánico">
-            </a>
-            <a href="capitulo-6-el-jardin-botanico-un-mensaje-en-las-hojas.html">Jardín Botánico</a>
+      <article class="chapter">
+        <a href="capitulo-6-el-jardin-botanico-un-mensaje-en-las-hojas.html" class="thumb">
+          <img src="jardin-canario.jpg" alt="Jardín Botánico">
+        </a>
+        <div class="cap">
+          <a href="capitulo-6-el-jardin-botanico-un-mensaje-en-las-hojas.html">Jardín Botánico</a>
         </div>
+      </article>
 
-        <div class="chapter">
-            <a href="capitulo-7-la-cumbre-de-gran-canaria-amigos-y-estrellas.html">
-                <img src="roque-nublo-2.jpg" alt="Cumbres de Gran Canaria">
-            </a>
-            <a href="capitulo-7-la-cumbre-de-gran-canaria-amigos-y-estrellas.html">Cumbres de Gran Canaria</a>
+      <article class="chapter">
+        <a href="capitulo-7-la-cumbre-de-gran-canaria-amigos-y-estrellas.html" class="thumb">
+          <img src="roque-nublo-2.jpg" alt="Cumbres de Gran Canaria">
+        </a>
+        <div class="cap">
+          <a href="capitulo-7-la-cumbre-de-gran-canaria-amigos-y-estrellas.html">Cumbres de Gran Canaria</a>
         </div>
+      </article>
 
-        <div class="chapter">
-            <a href="capitulo-8-el-mercado-del-puerto-recetas-de-vida.html">
-                <img src="mercado-del-puerto.jpg" alt="Mercado del Puerto">
-            </a>
-            <a href="capitulo-8-el-mercado-del-puerto-recetas-de-vida.html">Mercado del Puerto</a>
+      <article class="chapter">
+        <a href="capitulo-8-el-mercado-del-puerto-recetas-de-vida.html" class="thumb">
+          <img src="mercado-del-puerto.jpg" alt="Mercado del Puerto">
+        </a>
+        <div class="cap">
+          <a href="capitulo-8-el-mercado-del-puerto-recetas-de-vida.html">Mercado del Puerto</a>
         </div>
+      </article>
 
-        <div class="chapter">
-            <a href="capitulo-9-las-dunas-de-maspalomas-huellas-en-la-arena.html">
-                <img src="las-dunas-de-maspalomas.jpg" alt="Las Dunas de Maspalomas">
-            </a>
-            <a href="capitulo-9-las-dunas-de-maspalomas-huellas-en-la-arena.html">Las Dunas de Maspalomas</a>
+      <article class="chapter">
+        <a href="capitulo-9-las-dunas-de-maspalomas-huellas-en-la-arena.html" class="thumb">
+          <img src="las-dunas-de-maspalomas.jpg" alt="Las Dunas de Maspalomas">
+        </a>
+        <div class="cap">
+          <a href="capitulo-9-las-dunas-de-maspalomas-huellas-en-la-arena.html">Las Dunas de Maspalomas</a>
         </div>
+      </article>
 
-        <div class="chapter">
-            <a href="capitulo-10-la-catedral-de-santa-ana-ecos-del-pasado.html">
-                <img src="la-catedral-de-santa-ana.jpg" alt="La Catedral de Santa Ana">
-            </a>
-            <a href="capitulo-10-la-catedral-de-santa-ana-ecos-del-pasado.html">La Catedral de Santa Ana</a>
+      <article class="chapter">
+        <a href="capitulo-10-la-catedral-de-santa-ana-ecos-del-pasado.html" class="thumb">
+          <img src="la-catedral-de-santa-ana.jpg" alt="La Catedral de Santa Ana">
+        </a>
+        <div class="cap">
+          <a href="capitulo-10-la-catedral-de-santa-ana-ecos-del-pasado.html">La Catedral de Santa Ana</a>
         </div>
+      </article>
 
-        <div class="chapter">
-            <a href="capitulo-11-el-pueblo-canario-voces-del-folclore.html">
-                <img src="el-pueblo-canario.jpg" alt="El Pueblo Canario">
-            </a>
-            <a href="capitulo-11-el-pueblo-canario-voces-del-folclore.html">El Pueblo Canario</a>
+      <article class="chapter">
+        <a href="capitulo-11-el-pueblo-canario-voces-del-folclore.html" class="thumb">
+          <img src="el-pueblo-canario.jpg" alt="El Pueblo Canario">
+        </a>
+        <div class="cap">
+          <a href="capitulo-11-el-pueblo-canario-voces-del-folclore.html">El Pueblo Canario</a>
         </div>
+      </article>
 
-        <div class="chapter">
-            <a href="capitulo-12-el-castillo-de-la-luz-guardianes-del-legado.html">
-                <img src="el-castillo-de-la-luz.jpg" alt="El Castillo de la Luz">
-            </a>
-            <a href="capitulo-12-el-castillo-de-la-luz-guardianes-del-legado.html">El Castillo de la Luz</a>
+      <article class="chapter">
+        <a href="capitulo-12-el-castillo-de-la-luz-guardianes-del-legado.html" class="thumb">
+          <img src="el-castillo-de-la-luz.jpg" alt="El Castillo de la Luz">
+        </a>
+        <div class="cap">
+          <a href="capitulo-12-el-castillo-de-la-luz-guardianes-del-legado.html">El Castillo de la Luz</a>
         </div>
+      </article>
 
-        <div class="chapter">
-            <a href="capitulo-13-puerto-de-las-palmas-la-carta-en-la-botella.html">
-                <img src="puerto-de-las-palmas.jpg" alt="El Puerto de Las Palmas">
-            </a>
-            <a href="capitulo-13-puerto-de-las-palmas-la-carta-en-la-botella.html">El Puerto de Las Palmas</a>
+      <article class="chapter">
+        <a href="capitulo-13-puerto-de-las-palmas-la-carta-en-la-botella.html" class="thumb">
+          <img src="puerto-de-las-palmas.jpg" alt="El Puerto de Las Palmas">
+        </a>
+        <div class="cap">
+          <a href="capitulo-13-puerto-de-las-palmas-la-carta-en-la-botella.html">El Puerto de Las Palmas</a>
         </div>
+      </article>
 
-        <div class="chapter">
-            <a href="capitulo-14-barranco-de-guiniguada-una-caminata-para-recordar.html">
-                <img src="barranco-de-guiniguada.jpg" alt="El Barranco Guiniguada">
-            </a>
-            <a href="capitulo-14-barranco-de-guiniguada-una-caminata-para-recordar.html">El Barranco Guiniguada</a>
+      <article class="chapter">
+        <a href="capitulo-14-barranco-de-guiniguada-una-caminata-para-recordar.html" class="thumb">
+          <img src="barranco-de-guiniguada.jpg" alt="El Barranco Guiniguada">
+        </a>
+        <div class="cap">
+          <a href="capitulo-14-barranco-de-guiniguada-una-caminata-para-recordar.html">El Barranco Guiniguada</a>
         </div>
+      </article>
 
-        <div class="chapter">
-            <a href="capitulo-15-plaza-de-santa-ana-las-estatuas-que-cuentan-historias.html">
-                <img src="plaza-de-santa-ana.jpg" alt="La Plaza de Santa Ana">
-            </a>
-            <a href="capitulo-15-plaza-de-santa-ana-las-estatuas-que-cuentan-historias.html">La Plaza de Santa Ana</a>
+      <article class="chapter">
+        <a href="capitulo-15-plaza-de-santa-ana-las-estatuas-que-cuentan-historias.html" class="thumb">
+          <img src="plaza-de-santa-ana.jpg" alt="La Plaza de Santa Ana">
+        </a>
+        <div class="cap">
+          <a href="capitulo-15-plaza-de-santa-ana-las-estatuas-que-cuentan-historias.html">La Plaza de Santa Ana</a>
         </div>
+      </article>
 
-        <div class="chapter">
-            <a href="capitulo-16-el-confital-la-ola-perfecta.html">
-                <img src="el-confital.jpg" alt="El Confital">
-            </a>
-            <a href="capitulo-16-el-confital-la-ola-perfecta.html">El Confital</a>
+      <article class="chapter">
+        <a href="capitulo-16-el-confital-la-ola-perfecta.html" class="thumb">
+          <img src="el-confital.jpg" alt="El Confital">
+        </a>
+        <div class="cap">
+          <a href="capitulo-16-el-confital-la-ola-perfecta.html">El Confital</a>
         </div>
+      </article>
 
-        <div class="chapter">
-            <a href="capitulo-17-museo-elder-ciencia-y-magia.html">
-                <img src="el-museo-elder.jpg" alt="El Museo Élder">
-            </a>
-            <a href="capitulo-17-museo-elder-ciencia-y-magia.html">El Museo Élder</a>
+      <article class="chapter">
+        <a href="capitulo-17-museo-elder-ciencia-y-magia.html" class="thumb">
+          <img src="el-museo-elder.jpg" alt="El Museo Élder">
+        </a>
+        <div class="cap">
+          <a href="capitulo-17-museo-elder-ciencia-y-magia.html">El Museo Élder</a>
         </div>
+      </article>
 
-        <div class="chapter">
-            <a href="capitulo-18-arucas-la-piedra-que-canta.html">
-                <img src="arucas.jpg" alt="Arucas">
-            </a>
-            <a href="capitulo-18-arucas-la-piedra-que-canta.html">Arucas</a>
+      <article class="chapter">
+        <a href="capitulo-18-arucas-la-piedra-que-canta.html" class="thumb">
+          <img src="arucas.jpg" alt="Arucas">
+        </a>
+        <div class="cap">
+          <a href="capitulo-18-arucas-la-piedra-que-canta.html">Arucas</a>
         </div>
+      </article>
 
-        <div class="chapter">
-            <a href="teror-el-milagro-del-agua.html">
-                <img src="teror.jpg" alt="Teror">
-            </a>
-            <a href="teror-el-milagro-del-agua.html">Teror</a>
+      <article class="chapter">
+        <a href="teror-el-milagro-del-agua.html" class="thumb">
+          <img src="teror.jpg" alt="Teror">
+        </a>
+        <div class="cap">
+          <a href="teror-el-milagro-del-agua.html">Teror</a>
         </div>
+      </article>
 
-        <div class="chapter">
-            <a href="capitulo-20-el-faro-de-maspalomas-luz-en-la-oscuridad.html">
-                <img src="faro-de-maspalomas.jpg" alt="El Faro de Maspalomas">
-            </a>
-            <a href="capitulo-20-el-faro-de-maspalomas-luz-en-la-oscuridad.html">El Faro de Maspalomas</a>
+      <article class="chapter">
+        <a href="capitulo-20-el-faro-de-maspalomas-luz-en-la-oscuridad.html" class="thumb">
+          <img src="faro-de-maspalomas.jpg" alt="El Faro de Maspalomas">
+        </a>
+        <div class="cap">
+          <a href="capitulo-20-el-faro-de-maspalomas-luz-en-la-oscuridad.html">El Faro de Maspalomas</a>
         </div>
+      </article>
 
-        <div class="chapter">
-            <a href="epilogo.html">
-                <img src="epilogo.jpg" alt="Epílogo">
-            </a>
-            <a href="epilogo.html">Epílogo</a>
+      <article class="chapter">
+        <a href="epilogo.html" class="thumb">
+          <img src="epilogo.jpg" alt="Epílogo">
+        </a>
+        <div class="cap">
+          <a href="epilogo.html">Epílogo</a>
         </div>
-    </div>
+      </article>
 
+    </section>
+  </div>
 </body>
 </html>
